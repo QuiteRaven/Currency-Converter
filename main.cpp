@@ -1,10 +1,11 @@
-#include "QtGuiApplication1.h"
-#include <QtWidgets/QApplication>
+#include "mainwindow.h"
+#include "application.h"
 
 int main(int argc, char *argv[])
 {
-	QApplication a(argc, argv);
-	QtGuiApplication1 w;
-	w.show();
-	return a.exec();
+    Currency::Application App(argc, argv);
+    Currency::MainWindow w;
+    w.show();
+
+    return App.exec();
 }
