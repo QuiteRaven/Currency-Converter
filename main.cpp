@@ -1,11 +1,10 @@
 #include "mainwindow.h"
-#include "application.h"
+#include <QtWidgets/QApplication>
 
 int main(int argc, char *argv[])
 {
-    Currency::Application App(argc, argv);
-    Currency::MainWindow w;
-    w.show();
-
-    return App.exec();
+	QApplication app(argc, argv);
+	MainWindow w;
+	w.show();
+	return app.exec();
 }

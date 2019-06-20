@@ -9,7 +9,6 @@ find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_headers 
     mainwindow.h
-    application.h
     itemeditdialog.h
     itemeditframe.h
     itemeditmainframe.h
@@ -18,7 +17,6 @@ set(project_headers
 set(project_sources 
     main.cpp
     mainwindow.cpp
-    application.cpp
     itemeditdialog.cpp
     itemeditframe.cpp
     itemeditmainframe.cpp)

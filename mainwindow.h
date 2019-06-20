@@ -2,27 +2,42 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDialog>
+#include<QFrame>
 
+#include "itemEditFrame.h"
+#include "itemEditMainFrame.h"
+
+class QPushButton;
 class QAction;
 
-namespace Currency {
+class Buttons : public QFrame
+{
+	Q_OBJECT
 
+public:
+	Buttons(QWidget *parent = 0);
+
+private:
+	QPushButton *pConvert;
+};
 
 class MainWindow : public QMainWindow
 {
-    Q_OBJECT
-
-private:
-    QAction *actNewItem;
-    QAction *actAbout;
+	Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = 0);
-    ~MainWindow();
+	MainWindow(QWidget *parent = Q_NULLPTR);
+	~MainWindow();
 
 protected slots:
-    void newItem(void);
-};
+	void newItem(void);
 
-} //namespace Currency
-#endif // MAINWINDOW_H
+private:
+	Buttons				*Btn;
+	ItemEditFrame       *Edt;
+	ItemEditMainFrame   *MEdt;
+	QAction	   * _actNewItem;
+	
+};
+#endif

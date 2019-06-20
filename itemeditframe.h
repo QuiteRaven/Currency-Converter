@@ -3,19 +3,16 @@
 
 #include <QFrame>
 
-namespace Currency {
-
 class ItemEditFrame : public QFrame
 {
 
-    Q_OBJECT
-
-private:
-    void setup_Kind(QLayout *L1);
+	Q_OBJECT
 
 public:
-    ItemEditFrame(QWidget *parent = 0);
-        ~ItemEditFrame();
+	ItemEditFrame(QWidget *parent = 0);
+		~ItemEditFrame();
+
+private:
+	void setup_Kind(QLayout *L1);
 };
-}//namespace Currency
-#endif // ITEMEDITFRAME_H
+#endif
