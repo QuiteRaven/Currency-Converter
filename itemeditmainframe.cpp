@@ -1,4 +1,5 @@
-#include "ItemEditMainFrame.h"
+#include "item_edit_main_frame.h"
+
 #include <QVBoxLayout>
 #include <QHBoxLayout>
 #include <QLabel>
@@ -6,144 +7,121 @@
 #include <QSizePolicy>
 #include <QComboBox>
 
-
 ItemEditMainFrame::ItemEditMainFrame(QWidget *parent)
-	:QFrame(parent)
+    :QFrame(parent)
 {
-	setFrameStyle(StyledPanel | Sunken);
-	setSizePolicy(QSizePolicy::Expanding,
-				  QSizePolicy::Expanding);
-	QVBoxLayout *L1 = new QVBoxLayout(this);
-	{
-		QHBoxLayout *L3 = new QHBoxLayout();
-		L1->setMargin(0);
-		L1->addLayout(L3);
-		setup_USD(L3);
-		setup_EUR(L3);
-	}
+    setFrameStyle(StyledPanel | Sunken);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    QVBoxLayout *layout = new QVBoxLayout(this);
+    
+        QHBoxLayout *layout_A = new QHBoxLayout();
+        layout->setMargin(0);
+        layout->addLayout(layout_A);
+        setup_USD(layout_A);
+        setup_EUR(layout_A);
 
-	{
-		QHBoxLayout *L3 = new QHBoxLayout();
-		L1->setMargin(0);
-		L1->addLayout(L3);
-		setup_GBP(L3);
-		setup_JPY(L3);
-	}
+        QHBoxLayout *layout_B = new QHBoxLayout();
+        layout->setMargin(0);
+        layout->addLayout(layout_B);
+        setup_GBP(layout_B);
+        setup_JPY(layout_B);
 
-	{
-		QHBoxLayout *L3 = new QHBoxLayout();
-		L1->setMargin(0);
-		L1->addLayout(L3);
-		setup_KZT(L3);
-		setup_RUB(L3);
-	}
-
-
+        QHBoxLayout *layout_C = new QHBoxLayout();
+        layout->setMargin(0);
+        layout->addLayout(layout_C);
+        setup_KZT(layout_C);
+        setup_RUB(layout_C);
 }
 
-void ItemEditMainFrame::setup_USD(QLayout *L1)
+void ItemEditMainFrame::setup_USD(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("USD"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("USD"));
-	L2->addWidget(lbl);
-
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
-
-
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
-void ItemEditMainFrame::setup_EUR(QLayout *L1)
+void ItemEditMainFrame::setup_EUR(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("EUR"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("EUR"));
-	L2->addWidget(lbl);
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
-void ItemEditMainFrame::setup_GBP(QLayout *L1)
+void ItemEditMainFrame::setup_GBP(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("GBP"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("GPB"));
-	L2->addWidget(lbl);
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
-void ItemEditMainFrame::setup_JPY(QLayout *L1)
+void ItemEditMainFrame::setup_JPY(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("JPY"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("JPY"));
-	L2->addWidget(lbl);
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
-void ItemEditMainFrame::setup_KZT(QLayout *L1)
+void ItemEditMainFrame::setup_KZT(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("KZT"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("KZT"));
-	L2->addWidget(lbl);
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
-void ItemEditMainFrame::setup_RUB(QLayout *L1)
+void ItemEditMainFrame::setup_RUB(QLayout *currency)
 {
+    QVBoxLayout *layout = new QVBoxLayout();
+   
+    layout->setMargin(10);
+    currency->addItem(layout);
 
-	QVBoxLayout *L2 = new QVBoxLayout();
-	L2->setSpacing(0);
-	L2->setMargin(10);
-	L1->addItem(L2);
+    QLabel *text = new QLabel(this);
+    text->setText(tr("RUB"));
+    layout->addWidget(text, 0, Qt::AlignBottom);
 
-	QLabel *lbl = new QLabel(this);
-	lbl->setText(tr("RUB"));
-	L2->addWidget(lbl);
-
-
-	QLineEdit *txt = new QLineEdit(this);
-	L2->addWidget(txt);
+    QLineEdit *field = new QLineEdit(this);
+    field->setReadOnly(true);
+    layout->addWidget(field);
 }
 
 ItemEditMainFrame::~ItemEditMainFrame()

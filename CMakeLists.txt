@@ -9,10 +9,10 @@ find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(project_headers 
     mainwindow.h
-    itemeditdialog.h
-    itemeditframe.h
-    itemeditmainframe.h
-    items.h)
+    item_edit_dialog.h
+    item_edit_frame.h
+    item_edit_main_frame.h
+    currency_types.h)
 
 set(project_sources 
     main.cpp

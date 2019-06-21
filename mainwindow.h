@@ -3,41 +3,39 @@
 
 #include <QMainWindow>
 #include <QDialog>
-#include<QFrame>
 
-#include "itemEditFrame.h"
-#include "itemEditMainFrame.h"
+#include "item_edit_frame.h"
+#include "item_edit_main_frame.h"
 
 class QPushButton;
 class QAction;
 
-class Buttons : public QFrame
+class Buttons : public QWidget
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	Buttons(QWidget *parent = 0);
+    explicit Buttons(QWidget *parent = nullptr);
 
 private:
-	QPushButton *pConvert;
+    QPushButton *_convertButton;
 };
 
 class MainWindow : public QMainWindow
 {
-	Q_OBJECT
+    Q_OBJECT
 
 public:
-	MainWindow(QWidget *parent = Q_NULLPTR);
-	~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+    ~MainWindow();
 
 protected slots:
-	void newItem(void);
+    void onNewItem();
 
 private:
-	Buttons				*Btn;
-	ItemEditFrame       *Edt;
-	ItemEditMainFrame   *MEdt;
-	QAction	   * _actNewItem;
-	
+    Buttons		   *_convertButton = nullptr;
+    ItemEditFrame        *_upFrame = nullptr;
+    ItemEditMainFrame   *_midFrame = nullptr;
+    QAction	         * _actNewItem = nullptr;
 };
 #endif

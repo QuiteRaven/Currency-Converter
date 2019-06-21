@@ -1,5 +1,5 @@
-#include "ItemEditFrame.h"
-#include "items.h"
+#include "item_edit_frame.h"
+#include "currency_types.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -8,52 +8,47 @@
 #include <QSizePolicy>
 #include <QComboBox>
 
-
-
 ItemEditFrame::ItemEditFrame(QWidget *parent)
-	: QFrame(parent)
+    : QWidget(parent)
 {
-	setSizePolicy(QSizePolicy::Expanding,
-				  QSizePolicy::Minimum);
-	QHBoxLayout *L = new QHBoxLayout(this);
-	{
-		{
-			QLabel *lbl1 = new QLabel(this);
-			lbl1->setText(tr("Data"));
-			L->addWidget(lbl1);
+    setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+    QHBoxLayout *layout = new QHBoxLayout(this);
+    {
+        QLabel *text = new QLabel(this);
+        text->setText(tr("Data"));
+        layout->addWidget(text);
 
-			QLineEdit *txt1 = new QLineEdit(this);
-			L->addWidget(txt1);
-		}
-		L->addItem(new QSpacerItem(0, 0, QSizePolicy::Expanding,
-			QSizePolicy::Minimum));
-		{
-			QLabel *lbl = new QLabel(this);
-			lbl->setText(tr("Enter currency"));
-			L->addWidget(lbl);
+        QLineEdit *field = new QLineEdit(this);
+        field->setMaxLength(10);
+        field->setText(tr("XX/XX/XXXX"));
+        layout->addWidget(field);
 
-			QLineEdit *txt = new QLineEdit(this);
-			L->addWidget(txt);
-			setup_Kind(L);
-		}
-	}
+        layout->addItem(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
+
+        QLabel *lable_A = new QLabel(this);
+        lable_A->setText(tr("Enter currency"));
+        layout->addWidget(lable_A);
+
+        QLineEdit *field_A = new QLineEdit(this);
+        field_A->setMaxLength(20);
+        layout->addWidget(field_A);
+        setup_currency(layout);
+    }
 }
 
-void ItemEditFrame::setup_Kind(QLayout *L1)
+void ItemEditFrame::setup_currency(QLayout *currency)
 {
+    QHBoxLayout *layout_A = new QHBoxLayout();
+    currency->addItem(layout_A);
 
-	QHBoxLayout *L2 = new QHBoxLayout();
-	L1->addItem(L2);
-
-	QComboBox *cbx = new QComboBox(this);
-	cbx->addItem(tr("USD"), USD);
-	cbx->addItem(tr("EUR"), EUR);
-	cbx->addItem(tr("GBP"), GBP);
-	cbx->addItem(tr("JPY"), JPY);
-	cbx->addItem(tr("KZT"), KZT);
-	cbx->addItem(tr("RUB"), RUB);
-	L2->addWidget(cbx);
-
+    QComboBox *dropList = new QComboBox(this);
+    dropList->addItem(tr("USD"), USD);
+    dropList->addItem(tr("EUR"), EUR);
+    dropList->addItem(tr("GBP"), GBP);
+    dropList->addItem(tr("JPY"), JPY);
+    dropList->addItem(tr("KZT"), KZT);
+    dropList->addItem(tr("RUB"), RUB);
+    layout_A->addWidget(dropList);
 }
 
 ItemEditFrame::~ItemEditFrame()
