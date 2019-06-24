@@ -12,10 +12,12 @@ set(project_headers
     item_edit_dialog.h
     item_edit_frame.h
     item_edit_main_frame.h
+    downloader.h
     currency_types.h)
 
 set(project_sources 
     main.cpp
+    downloader.cpp
     mainwindow.cpp
     itemeditdialog.cpp
     itemeditframe.cpp
