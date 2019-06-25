@@ -7,20 +7,23 @@
 #include <QLineEdit>
 #include <QSizePolicy>
 #include <QComboBox>
+#include <QFile>
+#include <QStandardItem>
 
 ItemEditFrame::ItemEditFrame(QWidget *parent)
     : QWidget(parent)
 {
     setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
     QHBoxLayout *layout = new QHBoxLayout(this);
-    {
+    
         QLabel *text = new QLabel(this);
-        text->setText(tr("Data"));
+        text->setText(tr("Date"));
         layout->addWidget(text);
-
         QLineEdit *field = new QLineEdit(this);
         field->setMaxLength(10);
-        field->setText(tr("XX/XX/XXXX"));
+        field->setPlaceholderText("YYYY-MM-DD");
+        _date = field->text();
+        //field->setPlaceholderText(dw.);
         layout->addWidget(field);
 
         layout->addItem(new QSpacerItem(0, 0, QSizePolicy::Expanding, QSizePolicy::Minimum));
@@ -33,7 +36,7 @@ ItemEditFrame::ItemEditFrame(QWidget *parent)
         field_A->setMaxLength(20);
         layout->addWidget(field_A);
         setup_currency(layout);
-    }
+    
 }
 
 void ItemEditFrame::setup_currency(QLayout *currency)
@@ -50,6 +53,7 @@ void ItemEditFrame::setup_currency(QLayout *currency)
     dropList->addItem(tr("RUB"), RUB);
     layout_A->addWidget(dropList);
 }
+
 
 ItemEditFrame::~ItemEditFrame()
 {

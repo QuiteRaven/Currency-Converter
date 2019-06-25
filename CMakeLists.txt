@@ -4,7 +4,7 @@ project(Currency-Converter LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
-find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui)
+find_package(Qt5 REQUIRED COMPONENTS Core Widgets Gui Network)
 
 
 set(project_headers 
@@ -12,12 +12,10 @@ set(project_headers
     item_edit_dialog.h
     item_edit_frame.h
     item_edit_main_frame.h
-    downloader.h
     currency_types.h)
 
 set(project_sources 
     main.cpp
-    downloader.cpp
     mainwindow.cpp
     itemeditdialog.cpp
     itemeditframe.cpp
@@ -33,4 +31,5 @@ target_link_libraries(${PROJECT_NAME}
     PUBLIC 
     Qt5::Core
     Qt5::Gui
-    Qt5::Widgets)
+    Qt5::Widgets
+    Qt5::Network)

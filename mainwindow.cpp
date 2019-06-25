@@ -13,6 +13,8 @@
 #include <QBoxLayout>
 #include <QSizePolicy>
 
+const QString API_KEY = "5e77529f0adfeacd8f2b";
+
 Buttons::Buttons(QWidget *parent)
     :QWidget(parent)
 {
@@ -33,12 +35,9 @@ MainWindow::MainWindow(QWidget *parent)
 {
     setWindowTitle(tr("Currency-Converter"));
 
-    QFrame *frame = new QFrame();
+    auto *frame = new QFrame();
     setCentralWidget(frame);
     auto *layout = new QVBoxLayout(frame);
-
-    // auto layout = new QVBoxLayout(this);
-    // setLayout(layout);
 
     _upFrame = new ItemEditFrame(this);
     layout->addWidget(_upFrame);
@@ -54,6 +53,31 @@ MainWindow::MainWindow(QWidget *parent)
     connect(_actNewItem, &QAction::triggered, this, &MainWindow::onNewItem);
     QMenu *mItem = menuBar()->addMenu(tr("Help"));
     mItem->addAction(_actNewItem);
+
+    _networkManager = new QNetworkAccessManager();
+    connect(_networkManager, &QNetworkAccessManager::finished, this, &MainWindow::onResult);
+}
+
+void MainWindow::onResult(QNetworkReply *reply)
+{
+    if (!reply->error()) {
+        auto json = QJsonDocument::fromJson(reply->readAll());
+        parse(json);
+    }
+    reply->deleteLater();
+}
+
+void MainWindow::parse(QJsonDocument &js)
+{
+   
+}
+
+void MainWindow::get(QString &Date)
+{
+    QUrl url;
+    url = QString("https://free.currconv.com/api/v7/convert?q=RUB_USD,RUB_EUR,RUB_GBP,RUB_JPY,RUB_KZT,RUB_RUB&compact=ultra&date=%1&apiKey=%2")
+        .arg(Date).arg(API_KEY);
+    _networkManager->get(QNetworkRequest(url));
 }
 
 
