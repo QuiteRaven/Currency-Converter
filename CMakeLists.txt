@@ -12,14 +12,16 @@ set(project_headers
     item_edit_dialog.h
     item_edit_frame.h
     item_edit_main_frame.h
-    currency_types.h)
+    currency_types.h
+    downloader.h)
 
 set(project_sources 
     main.cpp
     mainwindow.cpp
     itemeditdialog.cpp
     itemeditframe.cpp
-    itemeditmainframe.cpp)
+    itemeditmainframe.cpp
+    downloader.cpp)
 
 
 qt5_wrap_cpp(project_sources_moc ${project_headers})

@@ -22,7 +22,7 @@ ItemEditFrame::ItemEditFrame(QWidget *parent)
         QLineEdit *field = new QLineEdit(this);
         field->setMaxLength(10);
         field->setPlaceholderText("YYYY-MM-DD");
-        _date = field->text();
+        //_date = field->text();
         //field->setPlaceholderText(dw.);
         layout->addWidget(field);
 
@@ -32,8 +32,11 @@ ItemEditFrame::ItemEditFrame(QWidget *parent)
         lable_A->setText(tr("Enter currency"));
         layout->addWidget(lable_A);
 
+        QValidator *inputRange = new QDoubleValidator(this);
+
         QLineEdit *field_A = new QLineEdit(this);
         field_A->setMaxLength(20);
+        field_A->setValidator(inputRange);
         layout->addWidget(field_A);
         setup_currency(layout);
     

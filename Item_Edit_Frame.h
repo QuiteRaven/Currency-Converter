@@ -13,9 +13,9 @@ public:
     explicit ItemEditFrame(QWidget *parent = nullptr);
     ~ItemEditFrame();
 
-    QString GetDate() const { return _date; }
+    //QString GetDate() const { return _date; }
 private:
     void setup_currency(QLayout *currency);
-    QString _date;
+    //QString _date;
 };
 #endif

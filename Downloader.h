@@ -8,15 +8,20 @@
 #include <QJsonObject>
 #include <QUrl>
 
+#include "item_edit_frame.h"
+#include "item_edit_main_frame.h"
+
 class Downloader : public QObject
 {
     Q_OBJECT
 
 public:
-    Downloader();
+    Downloader(QObject *parent);
     ~Downloader();
 
-private slots:
+    void get(QString &Date);
+    
+private:
     void onResult(QNetworkReply *reply);
 
 private:
